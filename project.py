@@ -1,1 +1,3 @@
-print("Hello, world")
+a = int(input("введите число"))
+print(a)
+
