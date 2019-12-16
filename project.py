@@ -1,4 +1,24 @@
-def main(a):
+import sys, getopt
+
+def main(argv):
+   inputfile = ''
+   outputfile = ''
+   try:
+      opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
+   except getopt.GetoptError:
+      print ('project.py -i <inputfile> -o <outputfile>') 
+      sys.exit(2)
+   for opt, arg in opts:
+      if opt == '-h':
+         print ('project.py -i <inputfile> -o <outputfile>') 
+         sys.exit()
+      elif opt in ("-i", "--ifile"):
+         inputfile = arg
+      elif opt in ("-o", "--ofile"):
+         outputfile = arg
+   print ('Input file is "', inputfile)
+   print ('Output file is "', outputfile)
+def num(a):
     while True:
         try:
             a = int(input("Введите число: "))
@@ -6,4 +26,6 @@ def main(a):
            print("Это не число")
         c = str(a)
         print("Хорошое число:"+c)
-main(1)
+num(1)
+if __name__ == "__main__":
+   num(sys.argv[1:])
