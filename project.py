@@ -11,15 +11,26 @@ def main(argv):
          print ('project.py -i <inputfile>') 
          sys.exit()
       elif opt in ("-i", "--ifile"):
-       num(arg)
+       return arg
 def num(a):
+    integer = check_integer(a)
+    result(integer)
 
-        try:
-            a = int(input("Введите число:"))
-        except ValueError:
-           print("Это не число")
-        c = str(a)
-        print("Хорошое число:"+c)
+def result(integer):
+   c = str(integer)
+   print("Хорошое число:"+c)
+
+def check_integer(arg):
+   try:
+      a = int(arg)
+      return a
+   except ValueError:
+      print("Это не число")
+      a = input("Введите число:")
+
+      check_integer(a)
+
 if __name__ == "__main__":
    arguments = sys.argv[1:]
-   main(arguments)
+   arg = main(arguments)
+   num(arg)
